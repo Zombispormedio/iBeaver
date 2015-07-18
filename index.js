@@ -14,41 +14,41 @@ app.use(router);
 
 
 //Conexion con la base de datos, devuelve el modelo de la coleccion
-var User=db();
+var Book=db();
 
 
 function sendAll(res){
-    return function(err, users){
+    return function(err, books){
         if(err){
             res.send(500, err.message);
         }
 
-        res.status(200).jsonp(users);
+        res.status(200).jsonp(books);
     };
 }
 
 
 //functiones rest
-function getAllUsers(req, res){
+function getAllBooks(req, res){
     //Busca en la base de datos
-    User.find(sendAll(res));
+    Book.find(sendAll(res));
 }
 
-function addUser(req, res){
-    User.create(
+function addBook(req, res){
+    Book.create(
 
-        {name:req.body.name,
-         surname:req.body.surname,
-         age:req.body.age,
-         work:req.body.work},
+        {title:req.body.title,
+         author:req.body.author,
+         score:req.body.score,
+         experience:req.body.experience},
 
-        function(err, user){
+        function(err, book){
 
             if(err) {
                 res.send(err);
             }
 
-            getAllUsers(req, res);
+            getAllBooks(req, res);
         }
 
     );
@@ -57,17 +57,17 @@ function addUser(req, res){
 
 
 
-function updateUser(req, res){
+function updateBook(req, res){
 
-    User.findById(req.params.id, function(err, user){
+    Book.findById(req.params.id, function(err, book){
 
-        user.name=req.body.name;
-        user.surname=req.body.surname;
-        user.age=req.body.age;
-        user.work=req.body.work;
-        user.save(function(err, user){
+        book.title=req.body.title;
+        book.author=req.body.author;
+        book.score=req.body.score;
+        book.experience=req.body.experience;
+        book.save(function(err, book){
         if(err) return res.send(500, err.message);
-            getAllUsers(req, res);
+            getAllBooks(req, res);
         });
 
     });
@@ -75,29 +75,29 @@ function updateUser(req, res){
 }
 
 
-function deleteUser(req, res){
-    User.findById(req.params.id,function(err, user){
-        user.remove(function(err){
+function deleteBook(req, res){
+    Book.findById(req.params.id,function(err, book){
+        book.remove(function(err){
             if(err) return res.send(500, err.message);
 
-            getAllUsers(req, res);
+            getAllBooks(req, res);
         });
 
     });
 }
 
 
-var users=express.Router();
+var books=express.Router();
 
-users.route('/users')
-    .get(getAllUsers)
-    .post(addUser);
+books.route('/books')
+    .get(getAllBooks)
+    .post(addBook);
 
-users.route('/users/:id')
-    .put(updateUser)
-    .delete(deleteUser);
+books.route('/books/:id')
+    .put(updateBook)
+    .delete(deleteBook);
 
-app.use('/api', users);
+app.use('/api', books);
 
 
 app.listen(app.get("port"), function(){

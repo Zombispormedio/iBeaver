@@ -4,27 +4,32 @@ app.controller('MainController', function($scope, $http, $modal, $log){
 
     $scope.formData={};
 
-    $http.get('api/users')
+
+    $http.get('api/books')
         .success(function(data){
-        $scope.users=data;
+        $scope.books=data;
 
     })
         .error(function(data){
         console.log("Error: "+data);
     });
 
+    $scope.hoveringOver = function(value) {
+        $scope.overStar = value;
+
+    };
 
 
 
-    $scope.createUser=function(){
+    $scope.createBook=function(){
 
-        $http.post('api/users', $scope.formData)
+        $http.post('api/books', $scope.formData)
             .success(function(data){
             for(var i in $scope.formData){
                 $scope.formData[i]="";
             }
             $scope.formData={};
-            $scope.users=data;
+            $scope.books=data;
 
         })
             .error(function(data){
@@ -35,11 +40,11 @@ app.controller('MainController', function($scope, $http, $modal, $log){
 
     };
 
-    $scope.deleteUser=function(id){
-        $http.delete('api/users/'+id)
+    $scope.deleteBook=function(id){
+        $http.delete('api/books/'+id)
             .success(function(data){
 
-            $scope.users=data;
+            $scope.books=data;
 
 
         })
@@ -49,9 +54,9 @@ app.controller('MainController', function($scope, $http, $modal, $log){
     };
 
 
-    $scope.updateUser=function(id){
+    $scope.updateBook=function(id){
 
-        $http.put('api/users/'+id, $scope.formData)
+        $http.put('api/books/'+id, $scope.formData)
             .success(function(data){
             $scope.formData={};
             $scope.users=data;
@@ -67,7 +72,7 @@ app.controller('MainController', function($scope, $http, $modal, $log){
 
     $scope.animationsEnabled = true;
 
-    $scope.open = function (user) {
+    $scope.open = function (book) {
 
         var modalInstance = $modal.open({
             animation: $scope.animationsEnabled,
@@ -77,20 +82,20 @@ app.controller('MainController', function($scope, $http, $modal, $log){
             resolve: {
                 items: function () {
 
-                    return user;
+                    return book;
                 }
             }
         });
 
-        modalInstance.result.then(function (user) {
-            $scope.formData=user.data;
+        modalInstance.result.then(function (book) {
+            $scope.formData=book.data;
 
-            if(user.flag){
+            if(book.flag){
 
-                $scope.updateUser(user.data._id);
+                $scope.updateBook(book.data._id);
             }else{
 
-                $scope.createUser();
+                $scope.createBook();
                 playTremolo();
             }
         }, function () {
@@ -111,13 +116,13 @@ app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
     if(update){
         $scope.formData=items;
         $scope.strings={
-            title: 'Editar usuario'
+            title: 'Edit Book'
 
         };
 
     }else{
         $scope.strings={
-            title: 'Añade un nuevo usuario'
+            title: 'Add new book'
 
         };
     }

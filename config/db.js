@@ -14,7 +14,7 @@ module.exports=function(){
     mongodb.once('open', function(){
         console.log("Abierta conexion con MongoDB");});
 
-    var model=mongoose.model("User", new mongoose.Schema(config.get("model")));
+    var model=mongoose.model("Book", new mongoose.Schema(config.get("model")));
 
     return model;
 

@@ -5,10 +5,10 @@ var config = (function () {
         db: "mongodb://teachit:wantedhex@ds059722.mongolab.com:59722/zombispormediodb",
         host: "localhost",
         model: {
-            name: String,
-            surname:String,
-            age: Number,
-            work: String
+            title: String,
+            author:String,
+            score: Number,
+            experience: String
         }
     };
     return {

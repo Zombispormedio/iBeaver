@@ -1,8 +1,9 @@
 <!doctype html>
 <html ng-app="myApp" lang="es">
     <head>
-        <title>Recomienda Libros</title>
+        <title>iBeaver</title>
         <meta charset="UTF-8">
+        <link rel="shortcut icon" type="image/png" href="icon2.png"/>
         <link href="./bower_components\bootstrap\dist\css\bootstrap.min.css" rel="stylesheet" />
 
         <link href="http://fonts.googleapis.com/css?family=Roboto:500,300,700,400" rel="stylesheet" type="text/css">
@@ -21,14 +22,21 @@
         <div class="wrap">
             <div class="container custom-container">
                 <div class="header">
-                    <div class="jumbotron">
-                        <h1>Recomienda Libros</h1>
+                    <div class="jumbotron row ">
+                        <img class="col-md-2" src="icon.png" alt="">
+                        <h1 >
+                            <span class="col-md-4">iBeaver</span>
+
+                            <small>One book, one experience</small>
+
+                        </h1>
+
                     </div>
                     <button class="btn btn-default btn-lg"  ng-click="open()">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </button>
                     <div class="btn btn-primary">
-                        Usuarios <span class="badge">{{users.length}}</span>
+                        Books <span class="badge">{{books.length}}</span>
                     </div>
                 </div>
 
@@ -39,10 +47,10 @@
                 <accordion close-others="true">
 
 
-                    <accordion-group  ng-repeat="user in users" >
+                    <accordion-group  ng-repeat="book in books" >
 
                         <accordion-heading is-open="status.open">
-                            <strong> {{user.name}} {{user.surname}} </strong>
+                            <strong> {{book.title}}, {{book.author}} </strong>
 
                             <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
 
@@ -50,14 +58,16 @@
                         </accordion-heading>
                         <ul class="list-group">
 
-                            <li class="list-group-item">Edad: {{user.age}}</li>
-                            <li class="list-group-item">Puesto de Trabajo: {{user.work}}</li>
+                            <li class="list-group-item"><h5>Score</h5>
+                                <rating ng-model="book.score" max="10"  readonly="true"></rating>
+                            </li>
+                            <li class="list-group-item"><h4>One Experience</h4><br> <p>{{book.experience}}</p></li>
                             <li class="list-group-item">
-                                <button class="btn btn-default" ng-click="open(user)">
-                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span> Editar
+                                <button class="btn btn-default" ng-click="open(book)">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span> Edit
                                 </button>
-                                <button class="btn btn-default" ng-click="deleteUser(user._id)">
-                                    <span class=" glyphicon glyphicon-trash" aria-hidden="true"> </span> Eliminar
+                                <button class="btn btn-default" ng-click="deleteUser(book._id)">
+                                    <span class=" glyphicon glyphicon-trash" aria-hidden="true"> </span> Delete
                                 </button>
 
                             </li>
@@ -65,8 +75,8 @@
                     </accordion-group>
 
                 </accordion>
-                <div class="alert alert-warning" role="alert" ng-show="!users.length">
-                    <strong>Oh no!  No hay usuarios</strong>
+                <div class="alert alert-warning" role="alert" ng-show="!books.length">
+                    <strong>Oh no!  There are not books</strong>
                 </div>
             </div>
             <div id="push"></div>
