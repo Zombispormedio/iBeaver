@@ -8,7 +8,9 @@ var config = (function () {
             title: String,
             author:String,
             score: Number,
-            experience: String
+            experience: String,
+            comic: Boolean,
+            artist:String
         }
     };
     return {

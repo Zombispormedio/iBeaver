@@ -3,7 +3,7 @@ var app=angular.module("myApp", ['ui.bootstrap']);
 app.controller('MainController', function($scope, $http, $modal, $log){
 
     $scope.formData={};
-
+    $scope.formData.score=0;
 
     $http.get('api/books')
         .success(function(data){

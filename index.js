@@ -23,7 +23,7 @@ function sendAll(res){
             res.send(500, err.message);
         }
 
-        res.status(200).jsonp(books);
+        res.status(200).jsonp(books.reverse());
     };
 }
 
@@ -40,7 +40,9 @@ function addBook(req, res){
         {title:req.body.title,
          author:req.body.author,
          score:req.body.score,
-         experience:req.body.experience},
+         comic:req.body.comic,
+         experience:req.body.experience,
+        artist:req.boy.artist},
 
         function(err, book){
 
@@ -64,7 +66,9 @@ function updateBook(req, res){
         book.title=req.body.title;
         book.author=req.body.author;
         book.score=req.body.score;
+        book.comic=req.body.comic;
         book.experience=req.body.experience;
+        book.artist=req.body.artist;
         book.save(function(err, book){
         if(err) return res.send(500, err.message);
             getAllBooks(req, res);

@@ -83,4 +83,8 @@ color:yellow;
     }
 }
 
+.fix{
+    margin-left: 1.2%;
+}
 
+textarea { resize:vertical ; max-height:250px;}

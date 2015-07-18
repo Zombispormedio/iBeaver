@@ -12,15 +12,27 @@
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Author" ng-model="formData.author" required>
             </div>
+
+            <div class="form-group" ng-if="formData.comic">
+                <input type="text" class="form-control" placeholder="Artist" ng-model="formData.artist" required>
+            </div>
             <div class="form-group">
                 <h3><small>Score</small>   <span class="label label-success" >
-                    <rating ng-model="formData.score" max="10"  on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+                    <rating ng-model="formData.score" max="10"  on-hover="hoveringOver(value)" on-leave="overStar = null"
+                            ></rating>
                     </span></h3>
 
             </div>
             <div class="form-group">
                 <textarea  ng-model="formData.experience" class="form-control" rows="5" placeholder="Your Experience"></textarea>
 
+            </div>
+
+            <div class="form-group">
+
+                <input  type="checkbox" ng-model="formData.comic" popover-placement="left" popover-trigger="mouseenter" popover="Cool!!" class="btn btn-default">
+
+                <label for="comic">Comic-Book</label>
             </div>
 
         </div>
