@@ -56,8 +56,8 @@
 
                         <accordion-heading is-open="status.open">
 
-                            <strong ng-class="{'col-md-10': book.comic, 'fix': !book.comic}" > {{book.title}}, {{book.author}} </strong>
-                            <span  ng-if="book.comic" class="label label-warning">Warning!!
+                            <strong ng-class="{'col-md-10': book.comic, 'fix': !book.comic}" > {{book.title}} </strong>
+                            <span  ng-if="book.comic" class="label label-warning ">Warning!!
                                 Comic Book
                             </span>
                             <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
@@ -65,6 +65,9 @@
 
                         </accordion-heading>
                         <ul class="list-group">
+                            <li class="list-group-item" ng-if="book.comic&&book.artist"><h4>Writer</h4>
+                                {{book.author}}
+                            </li>
                             <li class="list-group-item" ng-if="book.comic&&book.artist"><h4>Artist</h4>
                                 {{book.artist}}
                             </li>
