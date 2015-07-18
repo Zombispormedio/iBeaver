@@ -1,0 +1,89 @@
+<!doctype html>
+<html ng-app="myApp" lang="es">
+    <head>
+        <title>Lista de usuarios</title>
+        <meta charset="UTF-8">
+        <link href="./bower_components\bootstrap\dist\css\bootstrap.min.css" rel="stylesheet" />
+
+        <link href="http://fonts.googleapis.com/css?family=Roboto:500,300,700,400" rel="stylesheet" type="text/css">
+
+        <link href="./css/main.css" rel="stylesheet" />
+
+        <!-- Include the AngularJS library -->
+        <script src="./bower_components\angular\angular.min.js"></script>
+        <script src="./bower_components\angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="./bower_components\jquery\dist\jquery.min.js"></script>
+        <script src="./bower_components\bootstrap\dist\js\bootstrap.min.js"></script>
+
+
+    </head>
+    <body  ng-controller="MainController">
+        <div class="wrap">
+            <div class="container custom-container">
+                <div class="header">
+                    <div class="jumbotron">
+                        <h1>Lista de Usuarios</h1>
+                    </div>
+                    <button class="btn btn-default btn-lg"  ng-click="open()">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                    <div class="btn btn-primary">
+                        Usuarios <span class="badge">{{users.length}}</span>
+                    </div>
+                </div>
+
+
+                <hr>
+
+                <!--Directiva de Angular UI para el modo de presentacion desplegable-->
+                <accordion close-others="true">
+
+
+                    <accordion-group  ng-repeat="user in users" >
+
+                        <accordion-heading is-open="status.open">
+                            <strong> {{user.name}} {{user.surname}} </strong>
+
+                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+
+
+                        </accordion-heading>
+                        <ul class="list-group">
+
+                            <li class="list-group-item">Edad: {{user.age}}</li>
+                            <li class="list-group-item">Puesto de Trabajo: {{user.work}}</li>
+                            <li class="list-group-item">
+                                <button class="btn btn-default" ng-click="open(user)">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span> Editar
+                                </button>
+                                <button class="btn btn-default" ng-click="deleteUser(user._id)">
+                                    <span class=" glyphicon glyphicon-trash" aria-hidden="true"> </span> Eliminar
+                                </button>
+
+                            </li>
+                        </ul>
+                    </accordion-group>
+
+                </accordion>
+                <div class="alert alert-warning" role="alert" ng-show="!users.length">
+                    <strong>Oh no!  No hay usuarios</strong>
+                </div>
+            </div>
+            <div id="push"></div>
+        </div>
+
+
+
+        <div id="footer">
+            <div class="container">
+                <p class="muted credit">© 2015 <a href="">Xavier Serrano Espinosa</a> </p>
+            </div>
+        </div>
+
+        <!-- Modules -->
+        <script src="js/app.js"></script>
+
+
+
+    </body>
+</html>

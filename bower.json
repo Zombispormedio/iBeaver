@@ -1,0 +1,24 @@
+{
+  "name": "code2",
+  "version": "1.0.0",
+  "authors": [
+    "Xavier Serrano <zombispormedio007@gmail.com>"
+  ],
+  "description": "test",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+
+  "dependencies": {
+    "angular-bootstrap": "~0.13.0",
+    "angular-mocks": "~1.4.0",
+    "angular-route": "~1.4.0",
+    "bootstrap": "~3.3.4"
+  }
+}
