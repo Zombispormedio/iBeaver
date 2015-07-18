@@ -10,13 +10,12 @@ Instalación
 Puesta en Marcha
 
 1. npm start
-2. Ir a localhost:8080
+2. Ir a localhost:5000
 3. Ahora a añadir, editar y eliminar libros
 
 Todos los datos de configuración del servidor (db, host y port) están en config/config.js
 
-Resultado:
-![screenshot](screenshot.png)
+
 
 
 
