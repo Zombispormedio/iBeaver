@@ -1,5 +1,5 @@
-# listUser
-Aplicación Web usando Angular.js, Bootstrap, Node.js y Mongodb 
+# iBeaver
+Aplicación Web usando Angular.js, Bootstrap, Node.js y Mongodb
 
 Instalación
 
@@ -11,7 +11,7 @@ Puesta en Marcha
 
 1. npm start
 2. Ir a localhost:8080
-3. Ahora a añadir, editar y eliminar usuarios
+3. Ahora a añadir, editar y eliminar libros
 
 Todos los datos de configuración del servidor (db, host y port) están en config/config.js
 
