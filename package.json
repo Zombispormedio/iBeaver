@@ -12,10 +12,10 @@
     "license": "ISC",
     "dependencies":{
 	"bower": "latest",
-        "express":"~4.0.0",
-        "morgan": "~1.0.0",
-        "body-parser":"~1.0.0",
-        "method-override": "~1.0.0",
+        "express":"~4.16.3",
+        "morgan": "~1.9.0",
+        "body-parser":"~1.18.3",
+        "method-override": "~2.3.10",
         "mongoose":"latest"
     },
 	"readme": "README.md",
