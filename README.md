@@ -15,7 +15,7 @@ Puesta en Marcha
 
 Todos los datos de configuración del servidor (db, host y port) están en config/config.js
 
-[![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/Zombispormedio/ibeaver)
+[![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/Zombispormedio/ibeaver) [![Greenkeeper badge](https://badges.greenkeeper.io/Zombispormedio/iBeaver.svg)](https://greenkeeper.io/)
 
 
 
